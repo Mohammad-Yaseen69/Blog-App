@@ -1,5 +1,5 @@
 import config from "../config/config";
-import { Client, Databases, Query, Storage } from "appwrite";
+import { Client, Databases, Query, Storage, ID } from "appwrite";
 
 
 export class Service {
@@ -17,7 +17,7 @@ export class Service {
 
     async createPost({ Title, Content, slug, Img, Status, UserId }) {
         try {
-            await this.Database.createDocument(
+             return await this.Database.createDocument(
                 config.AppWrite_Database_Id,
                 config.AppWrite_Collection_Id,
                 slug,
@@ -29,7 +29,6 @@ export class Service {
                     UserId
                 }
             )
-            return true
         } catch (error) {
             return error
         }
@@ -82,13 +81,13 @@ export class Service {
         }
     }
 
-    async getAllPost(){
+    async getAllPost() {
         try {
             const response = await this.Database.listDocuments(
                 config.AppWrite_Database_Id,
                 config.AppWrite_Bucket_Id,
                 [
-                    Query.equal('Status' , 'active')
+                    Query.equal('Status', 'active')
                 ]
             )
 
@@ -96,6 +95,39 @@ export class Service {
         } catch (error) {
             return error
         }
+    }
+
+    // Storage Services 
+
+    async uploadFile(file) {
+        try {
+            return await this.Storage.createFile(
+                config.AppWrite_Bucket_Id,
+                ID.unique(),
+                file
+            )
+        } catch (error) {
+            return error
+        }
+    }
+
+    async deleteFile(fileId) {
+        try {
+            await this.Storage.deleteFile(
+                config.AppWrite_Bucket_Id,
+                fileId
+            )
+            return true
+        } catch (error) {
+            return error
+        }
+    }
+
+    getFilePreview(fileId) {
+        return this.Storage.getFilePreview(
+            config.AppWrite_Bucket_Id,
+            fileId,
+        )
     }
 }
 
