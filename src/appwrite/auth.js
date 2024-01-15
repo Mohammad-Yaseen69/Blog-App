@@ -28,7 +28,7 @@ export class AuthenticateService {
             throw error
         }
     }
-
+ 
     async login({ email, password }) {
         try {
             const account = await this.Account.createEmailSession(email, password);
