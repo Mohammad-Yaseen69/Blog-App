@@ -17,7 +17,7 @@ export class Service {
 
     async createPost({ Title, Content, slug, Img, Status, UserId }) {
         try {
-             return await this.Database.createDocument(
+            return await this.Database.createDocument(
                 config.AppWrite_Database_Id,
                 config.AppWrite_Collection_Id,
                 slug,
@@ -101,11 +101,12 @@ export class Service {
 
     async uploadFile(file) {
         try {
-            return await this.Storage.createFile(
+            await this.Storage.createFile(
                 config.AppWrite_Bucket_Id,
                 ID.unique(),
                 file
             )
+            return true
         } catch (error) {
             return error
         }
