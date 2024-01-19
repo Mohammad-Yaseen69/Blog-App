@@ -1,4 +1,4 @@
-const footer = [
+const footerLinks = [
     {
         title: 'Company',
         links: [
@@ -60,4 +60,4 @@ const footer = [
     }
 ]
 
-export { footer }
+export { footerLinks }
