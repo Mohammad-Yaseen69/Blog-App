@@ -2,11 +2,11 @@ import { useState, useEffect } from "react"
 import auth from "./appwrite/auth";
 import service from "./appwrite/DB&Storage";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "./store/authSlice";
-import { Button } from "./components";
+import { login, logout, toggleloading } from "./store/authSlice";
+import { Footer, Header } from "./components/";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const [loading, setLoading] = useState(true)
   const data = useSelector(state => state.auth.user)
   const status = useSelector(state => state.auth.status)
   const dispatch = useDispatch()
@@ -29,17 +29,20 @@ function App() {
         console.log(error);
       })
       .finally(() => {
-        setLoading(false)
+        dispatch(toggleloading(false))
       })
   }, [])
 
 
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-[#131315] text-white">
+    <div className="w-full h-screen relative  text-white">
 
-      {loading ? <h1>Loading...</h1> :
+      <Header />
+      {/* {loading ? <h1>Loading...</h1> :
+
         <div>
           {status ? (
+            // If the user is logged in
             <div>
               <h1>{data.userData.name}</h1>
               <Button name="logout" callback={() => {
@@ -47,8 +50,10 @@ function App() {
                 dispatch(logout())
                 window.location.reload()
               }} />
+              <img src="../assest/logo" className="w-[100px]" alt="" />
             </div>
           ) :
+            // If the user is not logged in
             (
               <Button
                 name="login"
@@ -63,7 +68,12 @@ function App() {
                 }} />
             )}
         </div>
-      }
+      } */}
+      <Outlet />
+
+      <div className="h-[100vh]  w-full "></div>
+
+      <Footer />
 
     </div>
   );

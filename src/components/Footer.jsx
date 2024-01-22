@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
-        <section className='w-full py-7 absolute bottom-0 left-0 '>
+        <section className='w-full py-7   '>
             <div className='w-full relative'>
                 <div className='w-full bg-[#101E41] py-7 max-md:flex-col flex items-center gap-9 justify-around'>
                     <img src={logo}
