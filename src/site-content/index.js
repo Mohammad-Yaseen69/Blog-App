@@ -60,4 +60,20 @@ const footerLinks = [
     }
 ]
 
-export { footerLinks }
+const navLinks = [
+    {
+        name: 'Home',
+        link: '/'
+    }
+    ,
+    {
+        name: 'AllPost',
+        link:'All-Post'
+    },
+    {
+        name: 'Create Post',
+        link: 'Create-Post'
+    }
+]
+
+export { footerLinks , navLinks}
