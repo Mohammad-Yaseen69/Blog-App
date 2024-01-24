@@ -3,7 +3,7 @@ import auth from "./appwrite/auth";
 import service from "./appwrite/DB&Storage";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, toggleloading } from "./store/authSlice";
-import { Footer, Header } from "./components/";
+import { Footer, Header, Login } from "./components/";
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
         </div>
       } */}
       <Outlet />
-
+      
       <div className="h-[100vh]  w-full "></div>
 
       <Footer />
