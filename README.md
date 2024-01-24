@@ -1,8 +1,13 @@
-# React + Vite
+# Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a web application designed for users to create, read, and manage blog posts. It includes authentication features for secure access and additional functionalities to enhance the blogging experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Authentication:** Secure user authentication to ensure data privacy.
+- **Add Post:** Create and publish blog posts effortlessly.
+- **Read Posts:** Explore a collection of blog posts on the platform.
+- **Update and Delete:** Edit or remove your published blog posts.
+- **Responsive Design:** Enjoy a seamless experience across various devices.
