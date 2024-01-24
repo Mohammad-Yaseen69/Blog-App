@@ -11,7 +11,7 @@ const InputField = ({
 
     const id = useId()
     return (
-        <>
+        <div className='w-full'>
             {lable &&
                 <label htmlFor={id} className='block text-sm font-medium '>
                     {lable}
@@ -25,7 +25,7 @@ const InputField = ({
                 ref={ref}
                 {...props}
             />
-        </>
+        </div>
     )
 }
 

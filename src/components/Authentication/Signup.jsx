@@ -1,38 +1,33 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { login as storeLogin } from '../../store/authSlice'
 import { useDispatch } from 'react-redux'
 import auth from '../../appwrite/auth'
 import Button from '../Button'
-import { useRef } from 'react'
 import InputField from '../InputField'
 
-const Login = () => {
-    const { register, handleSubmit, reset } = useForm()
+
+
+const Signup = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [error, setError] = useState('')
+    const { register, handleSubmit } = useForm()
     const [passwordToggle, setPasswordToggle] = useState(false)
-    const passwordRef = useRef(null)
-    const emailRef = useRef(null)
+    const [error, setError] = useState('')
 
-
-    const loginMethod = async (data) => {
+    const signupMethod = async (data) => {
         setError("")
         try {
-            const user = await auth.login(data)
+            const user = await auth.createAccount(data)
             if (user) {
-                const userdata = await auth.getUser()
-                dispatch(storeLogin(userdata))
+                const getUser = await auth.getUser()
+                dispatch(storeLogin(getUser))
                 navigate('/')
                 window.location.reload()
             }
         } catch (error) {
             setError(error.message)
-        }
-        finally {
-            reset()
         }
     }
 
@@ -40,30 +35,36 @@ const Login = () => {
         <div className="flex items-center relative bottom-7 justify-center w-full  h-[90vh]">
 
             <div className="bg-gray-200 bg-cover bg-center 
-            bg-[url(https://cdn.pixabay.com/photo/2016/11/02/22/53/background-1792968_960_720.jpg)] 
-            p-8 rounded shadow-md w-[25rem]">
-                <h2 className="text-3xl  font-serif text-center font-bold mb-10">Login</h2>
+        bg-[url(https://cdn.pixabay.com/photo/2016/11/02/22/53/background-1792968_960_720.jpg)] 
+        p-8 rounded shadow-md w-96">
+                <h2 className="text-3xl  font-serif text-center font-bold mb-10">Sign Up</h2>
 
-                <form onSubmit={handleSubmit(loginMethod)} className='flex flex-col gap-2'>
+                <form onSubmit={handleSubmit(signupMethod)} className='flex flex-col gap-2'>
                     <div className="mb-4">
                         <InputField
-                            ref={emailRef}
+                            type='text'
+                            lable="Full Name"
+                            className='w-full mt-2'
+                            placeholder = "Enter Your Name"
+                            {...register('name')}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <InputField
                             type='email'
                             lable="Email"
-                            placeholder="Enter Your Email"
                             className='w-full mt-2'
+                            placeholder = "Enter Your Email"
                             {...register('email', {
                                 required: true,
                                 validate: {
                                     matchPattern: (value) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value)
                                 }
                             })}
-
                         />
                     </div>
                     <div className="mb-4 relative flex items-center ">
                         <InputField
-                            ref={passwordRef}
                             type={`${passwordToggle ? "test" : "password"}`}
                             placeholder="Enter Your Password"
                             lable="Password"
@@ -78,13 +79,14 @@ const Login = () => {
                                 : <svg xmlns="http://www.w3.org/2000/svg" fill='white' stroke='white' height={20} viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" /></svg>}
                         </p>
                     </div>
-                    <Button type='submit' name={'Login'} className={'w-full'} />
+
+                    <Button type='submit' name={'Sign Up'} className={'w-full'} />
                 </form>
 
                 <p className='text-center mt-2'>
-                    Don't have an account?
-                    <Link to="/sign-up">
-                        <span className='text-blue-500 cursor-pointer'>Register</span>
+                    Already have an account?
+                    <Link to="/Login">
+                        <span className='text-blue-500 cursor-pointer'>Login</span>
                     </Link>
                 </p>
                 {error && <p className='text-red-500 font-semibold text-center mt-2'>{error}</p>}
@@ -94,4 +96,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

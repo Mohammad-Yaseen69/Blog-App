@@ -33,7 +33,6 @@ function App() {
       })
   }, [])
 
-
   return (
     <div className="w-full h-screen relative  text-white">
 
@@ -70,7 +69,9 @@ function App() {
         </div>
       } */}
       <Outlet />
-      
+
+      {status && <h1>Welcome {data.userData?.name}</h1>}
+
       <div className="h-[100vh]  w-full "></div>
 
       <Footer />
