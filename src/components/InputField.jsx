@@ -5,14 +5,15 @@ const InputField = ({
     placeholder = "",
     className = "",
     type = "text",
-    onChange = () => { }
+    onChange = () => { },
+    ...props
 }, ref) => {
 
     const id = useId()
     return (
         <>
             {lable &&
-                <label htmlFor={id} className='block text-sm font-medium text-gray-700'>
+                <label htmlFor={id} className='block text-sm font-medium '>
                     {lable}
                 </label>}
             <input
@@ -22,6 +23,7 @@ const InputField = ({
                 id={id}
                 onChange={onChange}
                 ref={ref}
+                {...props}
             />
         </>
     )
