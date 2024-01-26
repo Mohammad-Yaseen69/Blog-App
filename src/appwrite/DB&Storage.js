@@ -30,7 +30,7 @@ export class Service {
                 }
             )
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 
@@ -49,7 +49,7 @@ export class Service {
             )
             return response
         } catch (error) {
-            return error
+            return console.log(error);
         }
 
     }
@@ -64,7 +64,7 @@ export class Service {
 
             return response
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 
@@ -77,7 +77,7 @@ export class Service {
             )
             return response
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 
@@ -93,7 +93,7 @@ export class Service {
 
             return response
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 
@@ -101,14 +101,14 @@ export class Service {
 
     async uploadFile(file) {
         try {
-           const response =  await this.Storage.createFile(
+            const response = await this.Storage.createFile(
                 config.AppWrite_Bucket_Id,
                 ID.unique(),
                 file
             )
             return response
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 
@@ -120,7 +120,7 @@ export class Service {
             )
             return true
         } catch (error) {
-            return error
+            return console.log(error);
         }
     }
 

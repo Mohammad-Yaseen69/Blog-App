@@ -64,7 +64,7 @@ const Login = () => {
                     <div className="mb-4 relative flex items-center ">
                         <InputField
                             ref={passwordRef}
-                            type={`${passwordToggle ? "test" : "password"}`}
+                            type={`${passwordToggle ? "text" : "password"}`}
                             placeholder="Enter Your Password"
                             lable="Password"
                             className='w-full mt-2 flex-shrink-0'

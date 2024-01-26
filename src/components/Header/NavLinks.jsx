@@ -14,12 +14,13 @@ const NavLinks = ({ styles }) => {
     return (
         <>
             {loading ? <div className='loader'></div> :
-                <div className=''>
+                <div className='z-40'>
                     {status ? (
                         // If the user is logged in
                         <div className={`flex gap-4 ${styles} items-center`}>
                             {navLinks.map(link => (
                                 <h1
+                                    key={link.name}
                                     onClick={() => Navigate(link.link)}
                                     className='font-poppins cursor-pointer'>
                                     {link.name}
@@ -40,7 +41,7 @@ const NavLinks = ({ styles }) => {
 
                                 <Button name="Sign Up" callback={() => {
                                     Navigate('/sign-up')
-                                }}/>
+                                }} />
 
                             </div>
                         )}

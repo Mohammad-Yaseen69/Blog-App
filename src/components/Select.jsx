@@ -11,7 +11,7 @@ const Select = ({
 
     return (
         <div className='w-full'>
-            {label && <label htmlFor={id} className=''></label>}
+            {label && <label htmlFor={id} className='block text-sm font-medium'>{label}</label>}
             <select
                 {...props}
                 id={id}
