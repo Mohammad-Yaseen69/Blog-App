@@ -101,12 +101,12 @@ export class Service {
 
     async uploadFile(file) {
         try {
-            await this.Storage.createFile(
+           const response =  await this.Storage.createFile(
                 config.AppWrite_Bucket_Id,
                 ID.unique(),
                 file
             )
-            return true
+            return response
         } catch (error) {
             return error
         }
