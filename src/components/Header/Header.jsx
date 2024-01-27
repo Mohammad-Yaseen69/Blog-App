@@ -21,7 +21,7 @@ const Header = () => {
                     </h1>
 
                     <div className={`py-3 z-20 flex items-center max-xs:w-[200px] justify-center transition-all w-[200px] h-[100vh] rounded-lg bg-black absolute -top-4 ${toggle ? 'left-[0px]' : '-left-[300px] ' }`}>
-                        <NavLinks styles={'flex-col gap-9'}/>
+                        <NavLinks toggleState={setToggle} styles={'flex-col gap-9'}/>
                     </div>
                 </div>
             </div>

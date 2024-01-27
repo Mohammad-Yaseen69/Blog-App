@@ -5,7 +5,7 @@ import auth from '../../appwrite/auth'
 import { useNavigate } from 'react-router-dom'
 import { login, logout } from '../../store/authSlice'
 
-const NavLinks = ({ styles }) => {
+const NavLinks = ({ styles, toggleState }) => {
     const status = useSelector(state => state.auth.status)
     const loading = useSelector(state => state.auth.loading)
     const dispatch = useDispatch()
@@ -21,7 +21,11 @@ const NavLinks = ({ styles }) => {
                             {navLinks.map(link => (
                                 <h1
                                     key={link.name}
-                                    onClick={() => Navigate(link.link)}
+                                    onClick={() => {
+                                        Navigate(link.link)
+                                        if(toggleState) toggleState(false)
+                                    }
+                                    }
                                     className='font-poppins cursor-pointer'>
                                     {link.name}
                                 </h1>
