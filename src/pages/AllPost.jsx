@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 const AllPost = () => {
     const [posts, setPosts] = useState([])
     // const loading = useSelector(state => state.auth.loading)
-    const [loading , setLoader] = useState(true)
+    const [loading, setLoader] = useState(true)
 
     useEffect(() => {
         service.getAllPost([]).then(res => {
@@ -16,18 +16,18 @@ const AllPost = () => {
                 setPosts(res.documents)
             }
         })
-        .finally(() => {
-            setLoader(false)
-        })
+            .finally(() => {
+                setLoader(false)
+            })
     }, [])
-    console.log(loading);
-
+   
+    
     return (
         <div className={`w-full h-screen ${loading ? "flex items-center justify-center" : null}`}>
             {loading ? <div className='loader relative bottom-14'></div> : (
                 <div className='flex flex-wrap w-full mt-6 gap-5 items-center justify-center'>
                     {posts.length !== 0 ? posts.map(post => (
-                        <PostCard key={post.$id} $id={posts.$id} Img={post.Img} Title={post.Title} Content={post.Content} />
+                        <PostCard key={post.$id} $id={post.$id} Img={post.Img} Title={post.Title} Content={post.Content} />
                     ))
                         : <h1 className='text-center text-3xl text-white font-bold font-mono'>No Post Exist
                             <br />

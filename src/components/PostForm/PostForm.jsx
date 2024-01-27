@@ -11,7 +11,7 @@ const PostForm = ({ post }) => {
         watch, setValue, getValues } = useForm({
             defaultValues: {
                 Title: post?.Title ? post?.Title : '',
-                slug: post?.slug ? post?.slug : '',
+                slug: post?.$id ? post?.$id : '',
                 Content: post?.Content ? post?.Content : '',
                 Status: post?.Status ? post?.Status : 'active',
             }
@@ -23,7 +23,7 @@ const PostForm = ({ post }) => {
 
     const submit = async (data) => {
         setError("")
-        console.log(data);
+        
 
         try {
             if (post) {
@@ -34,15 +34,15 @@ const PostForm = ({ post }) => {
                 if (file) {
                     service.deleteFile(post.Img)
                 }
-                const post = await service.updatePost(
+                const postUbdate = await service.updatePost(
                     post.$id,
                     {
                         ...data,
                         Img: file ? fileId : post.Img,
                     }
                 )
-                if (post) {
-                    // navigate(`/posts/${post.$id}`)
+                if (postUbdate) {
+                    navigate(`/post/${post.$id}`)
                 }
             }
             else {
@@ -55,7 +55,7 @@ const PostForm = ({ post }) => {
                 })
                 console.log(post);
                 if (post) {
-                    // navigate(`/posts/${post.$id}`)
+                    navigate(`/post/${post.$id}`)
                 }
 
             }
