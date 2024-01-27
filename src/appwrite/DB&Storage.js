@@ -85,7 +85,7 @@ export class Service {
         try {
             const response = await this.Database.listDocuments(
                 config.AppWrite_Database_Id,
-                config.AppWrite_Bucket_Id,
+                config.AppWrite_Collection_Id,
                 [
                     Query.equal('Status', 'active')
                 ]
