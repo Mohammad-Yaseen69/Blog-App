@@ -7,11 +7,12 @@ import { Button } from '../components'
 const Home = () => {
     const status = useSelector(state => state.auth.status)
     const navigate = useNavigate()
+    const loader = useSelector(state => state.auth.loading)
     const data = useSelector(state => state.auth.user)
     return (
 
         <div className='w-full h-screen flex items-center  justify-center relative bottom-2'>
-            {status ?
+             {loader ? <div className='loader'> </div>  : status ?
                 <div className='w-[70%] mb-40 items-center flex flex-col gap-7'>
                     <h1 className='font-bold text-[3vw]'>Welcome <span className='text-green-700'>{data.userData?.name}</span></h1>
                     <p className='text-center w-[70%] font-semibold'>This is a web application designed for users to create, read, and manage blog posts. It includes authentication features for secure access and additional functionalities to enhance the blogging experience.</p>
