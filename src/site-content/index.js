@@ -68,7 +68,7 @@ const navLinks = [
     ,
     {
         name: 'AllPost',
-        link:'All-Post'
+        link:'posts'
     },
     {
         name: 'Create Post',
