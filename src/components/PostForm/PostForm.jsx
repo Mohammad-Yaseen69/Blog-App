@@ -103,9 +103,11 @@ const PostForm = ({ post }) => {
                         }}
                         {...register('slug', { required: true })}
                     />
-                    <RTE label="Content :"
+                    <RTE
+                        lable="Content :"
                         name="Content"
                         control={control}
+                        {...register('Content' , {required: !post}) }
                         defaultValue={getValues("Content")} />
 
                 </div>
