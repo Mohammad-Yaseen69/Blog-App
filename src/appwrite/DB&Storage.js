@@ -20,7 +20,7 @@ export class Service {
             return await this.Database.createDocument(
                 config.AppWrite_Database_Id,
                 config.AppWrite_Collection_Id,
-                slug,
+                ID.unique(),
                 {
                     Title,
                     Content,
@@ -34,12 +34,12 @@ export class Service {
         }
     }
 
-    async updatePost(slug, { Title, Content, Img, Status, UserId }) {
+    async updatePost(ID, { Title, Content, Img, Status, UserId }) {
         try {
             const response = await this.Database.updateDocument(
                 config.AppWrite_Database_Id,
                 config.AppWrite_Collection_Id,
-                slug,
+                ID,
                 {
                     Title,
                     Content,
