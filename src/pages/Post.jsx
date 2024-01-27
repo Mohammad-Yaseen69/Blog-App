@@ -33,30 +33,39 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="py-8 flex h-screen relative bottom-10 justify-center flex-col items-center">
 
-            <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                <img
-                    src={service.getFilePreview(post.Img)}
-                    alt={post.Title}
-                    className="rounded-xl"
-                />
+            <div className="border-2 flex flex-col justify-center items-center  p-10 rounded-lg">
 
+                <div className=" h-52 flex justify-center mb-4 relative  rounded-xl overflow-hidden">
+
+                    <img
+                        src={service.getFilePreview(post.Img)}
+                        alt={post.Title}
+                        className="rounded-xl object-cover transform hover:scale-105 transition duration-300"
+                    />
+
+
+                  
+                </div>
+                <div className="mb-6 text-center">
+                    <h1 className="text-3xl font-bold bg-gray-600 text-white shadow-lg  p-4 rounded-xl">{post.Title}</h1>
+                </div>
+                <div className="text-center browser-css ">
+                    {HtmlParser(post.Content)}
+                </div>
+
+                <div>
                 {isAuthor && (
-                    <div className="absolute right-6 top-6">
-                        <Link to={`/edit-post/${post.$id}`}>
-                            <Button name="Edit" bgColor="bg-green-500" className="mr-3" />
-                        </Link>
+                        <div className="flex gap-3 mt-5">
+                            <Link to={`/edit-post/${post.$id}`}>
+                                <Button name="Edit" bgColor="bg-green-500" className="mr-3" />
+                            </Link>
 
-                        <Button name="Delete" bgColor="bg-red-500" callback={deletePost} />
-                    </div>
-                )}
-            </div>
-            <div className="w-full mb-6">
-                <h1 className="text-2xl font-bold">{post.title}</h1>
-            </div>
-            <div className="browser-css">
-                {HtmlParser(post.Content)}
+                            <Button name="Delete" bgColor="bg-red-500" callback={deletePost} />
+                        </div>
+                    )}
+                </div>
             </div>
 
         </div>
