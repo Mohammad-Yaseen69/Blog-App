@@ -38,7 +38,7 @@ const PostForm = ({ post }) => {
                     post.$id,
                     {
                         ...data,
-                        Img: file ? fileId : post.Img,
+                        Img: file ? fileId.$id : post.Img,
                     }
                 )
                 if (postUbdate) {
@@ -51,7 +51,8 @@ const PostForm = ({ post }) => {
                 const post = await service.createPost({
                     ...data,
                     Img: fileId.$id,
-                    UserId: userData.userData.$id
+                    UserId: userData.userData.$id,
+                    UserName : userData.userData.name
                 })
                 console.log(post);
                 if (post) {

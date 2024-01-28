@@ -61,7 +61,7 @@ export default function Post() {
                             <Button name="Delete" bgColor="bg-red-500" callback={deletePost} />
                         </div>
                     ) : (
-                        <h1 className="text-center font-bold mt-3">Created By <span className="text-blue-500">{userData.userData?.name}</span></h1>
+                        <h1 className="text-center font-bold mt-3">Created By <span className="text-blue-500">{post.UserName}</span></h1>
                     )}
                 </div>
             </div>
