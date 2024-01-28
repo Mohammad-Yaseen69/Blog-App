@@ -23,9 +23,9 @@ const AllPost = () => {
    
     
     return (
-        <div className={`w-full h-screen ${loading ? "flex items-center justify-center" : null}`}>
+        <div className={`w-full  max-md:h-auto mt-10 mb-28 ${loading ? "flex items-center justify-center" : null}`}>
             {loading ? <div className='loader relative bottom-14'></div> : (
-                <div className='flex flex-wrap w-full mt-6 gap-5 items-center justify-center'>
+                <div className='flex flex-wrap w-full  mt-6 gap-5 items-center justify-center'>
                     {posts.length !== 0 ? posts.map(post => (
                         <PostCard key={post.$id} $id={post.$id} Img={post.Img} Title={post.Title} Content={post.Content} />
                     ))

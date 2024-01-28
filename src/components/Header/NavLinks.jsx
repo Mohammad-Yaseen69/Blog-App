@@ -23,7 +23,7 @@ const NavLinks = ({ styles, toggleState }) => {
                                     key={link.name}
                                     onClick={() => {
                                         Navigate(link.link)
-                                        if(toggleState) toggleState(false)
+                                        if (toggleState) toggleState(false)
                                     }
                                     }
                                     className='font-poppins cursor-pointer'>
@@ -39,12 +39,23 @@ const NavLinks = ({ styles, toggleState }) => {
                         // If the user is not logged in
                         (
                             <div className={`flex gap-4 ${styles} items-center`}>
+                                <h1
+
+                                    onClick={() => {
+                                        Navigate('/')
+                                        if (toggleState) toggleState(false)
+                                    }}
+                                    className='font-poppins cursor-pointer'>
+                                    Home
+                                </h1>
                                 <Button name="login" callback={() => {
                                     Navigate('/login')
+                                    if (toggleState) toggleState(false)
                                 }} />
 
                                 <Button name="Sign Up" callback={() => {
                                     Navigate('/sign-up')
+                                    if (toggleState) toggleState(false)
                                 }} />
 
                             </div>

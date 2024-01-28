@@ -3,7 +3,7 @@ import { Login } from '../components'
 
 const LoginPage = () => {
   return (
-    <div>
+    <div className='mx-3 mt-6 '>
         <Login />
     </div>
   )

@@ -3,7 +3,7 @@ import { Signup } from '../components'
 
 const SignupPage = () => {
   return (
-    <div >
+    <div className='h-screen w-full justify-center items-center mt-10 '>
         <Signup />
     </div>
   )

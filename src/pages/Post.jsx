@@ -11,7 +11,7 @@ export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
-    const userData = useSelector(state => state.auth.user)
+    const userData = useSelector(state => state.auth.user) 
 
     useEffect(() => {
         if (slug) {
@@ -23,6 +23,7 @@ export default function Post() {
     }, [slug, navigate]);
 
     const isAuthor = post && userData ? post.UserId === userData.userData.$id : false;
+
     const deletePost = () => {
         service.deletePost(post.$id).then((status) => {
             if (status) {
@@ -33,37 +34,34 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8 flex h-screen relative bottom-10 justify-center flex-col items-center">
+        <div className="py-8 mx-5 flex justify-center items-center">
 
-            <div className="border-2 flex flex-col justify-center items-center  p-10 rounded-lg">
+            <div className="w-full flex flex-col items-center max-w-sm text-black bg-gray-100 border-2 rounded-lg shadow-md p-10">
 
-                <div className=" h-52 flex justify-center mb-4 relative  rounded-xl overflow-hidden">
-
+                <div className="h-52 mb-4 relative rounded-xl overflow-hidden">
                     <img
                         src={service.getFilePreview(post.Img)}
                         alt={post.Title}
-                        className="rounded-xl object-cover transform hover:scale-105 transition duration-300"
+                        className="w-full h-full rounded-xl object-cover object-[0px] transform hover:scale-105 transition duration-300"
                     />
-
-
-                  
                 </div>
                 <div className="mb-6 text-center">
-                    <h1 className="text-3xl font-bold bg-gray-600 text-white shadow-lg  p-4 rounded-xl">{post.Title}</h1>
+                    <h1 className="text-2xl max-ss:text-[4vw] font-bold bg-gray-600 text-white shadow-lg p-4 rounded-xl">{post.Title}</h1>
                 </div>
-                <div className="text-center browser-css ">
+                <div className="text-center ">
                     {HtmlParser(post.Content)}
                 </div>
 
-                <div>
-                {isAuthor && (
-                        <div className="flex gap-3 mt-5">
+                <div className="mt-5">
+                    {isAuthor ? (
+                        <div className="flex gap-3">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button name="Edit" bgColor="bg-green-500" className="mr-3" />
+                                <Button name="Edit" bgColor="bg-green-500" />
                             </Link>
-
                             <Button name="Delete" bgColor="bg-red-500" callback={deletePost} />
                         </div>
+                    ) : (
+                        <h1 className="text-center font-bold mt-3">Created By <span className="text-blue-500">{userData.userData?.name}</span></h1>
                     )}
                 </div>
             </div>

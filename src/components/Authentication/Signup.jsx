@@ -32,7 +32,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="flex items-center relative bottom-7 justify-center w-full  h-[90vh]">
+        <div className="flex items-center  justify-center w-full  h-[90vh]">
 
             <div className="bg-gray-200 bg-cover bg-center 
         bg-[url(https://cdn.pixabay.com/photo/2016/11/02/22/53/background-1792968_960_720.jpg)] 

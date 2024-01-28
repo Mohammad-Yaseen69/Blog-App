@@ -7,7 +7,7 @@ const Header = () => {
     const [toggle , setToggle] = React.useState(false)
 
     return (
-        <section className='w-full relative my-4 items-center flex justify-between px-8'>
+        <section className='w-full relative mt-4 items-center flex justify-between px-8'>
             <img src={logo} className='w-[80px] rounded-full h-[80px]' alt="" />
 
             <div className=''>
